@@ -1,2 +1,2 @@
-# Dedag_project
+# Dedug_project
 For debaging project first
