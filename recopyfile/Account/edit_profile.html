@@ -1,0 +1,59 @@
+{% extends 'Account/base_account.html' %}
+{% block content %}
+
+ {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="admin__title">Редактирование профиля</div>
+    <div class="admin__content-profile">
+        <div class="admin__content-profile__header">
+            <h3 class="profile__title">Редактирование профиля</h3>
+            <h6 class="profile__subtitle">Здесь вы можете поменять  то что вам нужно</h6>
+        </div>
+        <div class="admin__content-profile__form" style="color: black !important;">
+            <form action="." method="post" enctype="multipart/form-data">
+                <div class="profile__form-inner">
+                    <div class="profile__form-datas">
+                        {% csrf_token %}
+                        {{ user_form.first_name }}
+                        <!-- <input name="name" type="text" placeholder="Имя"> -->
+                        {{ user_form.last_name }}
+                        <!-- <input name="full-name" type="text" placeholder="Фамилия"> -->
+                        {{ profile_form.phone}}
+                        <!-- <input name="phone" type="number" placeholder="Телефон"> -->
+                        {{ user_form.email }}
+                        <!-- <input name="email" type="email" placeholder="E-mail"> -->
+                        {{ user_form.old_pass }}
+                        <!-- <input name="old-pass" type="password" placeholder="Старый пароль"> -->
+                        {{ user_form.new_pass }}
+                        <!-- <input name="new-pass" type="password" placeholder="Новый пароль"> -->
+                        {{ user_form.new_pass_rep }}
+                        <!-- <input name="set-pass" type="password" placeholder="Подтвердите новый пароль"> -->
+                        <button type="submit">Подтвердить</button>
+                    </div>
+                    <div class="profile__form-profileView">
+                        <h5 style="color:#00b2e7;text-align: center;">Для более лучшего вида используйте размер изображения 320x320</h5>
+                        <div class="profile__form-profileImg">
+                            {% if data_profile.photo %}
+							<img src="{{data_profile.photo.url}}" alt="Profile image">
+							{% endif %}
+                        </div>
+                        <div class="profile__form-fileChoose">
+                            {{ profile_form.photo}}
+                            <!-- <input name="profile-image" id="profile-image" type="file" accept="image/*"> -->
+                            <label for="profile-image">
+                                <span>Загрузить фото</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+ 
+{% endblock %}

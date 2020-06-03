@@ -1,0 +1,13 @@
+{% extends 'Account/base_account.html' %}
+{% block content %}
+{% for amounts in amount %}
+<h1>Summ : {{amounts.summ}}</h1>
+
+<form action="." method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Пополнить</button>
+</form>
+
+{% endfor %}
+{% endblock %}
