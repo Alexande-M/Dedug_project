@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Log-In</title>
+	<link rel="icon" href="icon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/login.min.css">
+</head>
+
+<body>
+	<div class="modal">
+		<div class="modal__registration">
+			<div class="modal__registration-inner">
+				<div class="modal__users">
+					<div class="modal__users-title">
+						<div>Кем вы являетесь?</div>
+					</div>
+					<ul class="modal__users-type">
+						<li><a href="startuper.html">Новатор</a></li>
+						<li><a href="buyer.html">Покупатель</a></li>
+						<li><a href="investor.html">Инвестор</a></li>
+					</ul>
+				</div>
+				<div class="modal__logo">
+					<img src="img/modal-logo.svg" alt="logo">
+					
+				</div>
+				<div id="close-modal"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<section class="login">
+		<div class="login__form">
+			<div class="login__form-title">
+				<a href="javascript://" onclick="history.back();return false;" class="back-btn">
+					<img src="img/close.mob.svg" alt="back">
+				</a>
+				<span>Вход</span>в личный кабинет
+			</div>
+			<form>
+				<div class="login-input__title">Логин / Email</div>
+				<input type="email">
+				<div class="login-input__title">Пароль</div>
+				<input class="password" type="password">
+				<div class="form__btns">
+					<button type="submit">Войти</button>
+					<a href="#" class="forget__pass">Забыли пароль?</a>
+				</div>
+			</form>
+			<div class="login__privacy">
+				<a href="#" id="registration-modal">Регистрация нового пользователя</a>
+				<a href="#">Политика конфедициальности</a>
+			</div>
+		</div>
+		<div class="login__logo">
+			<a href="index.html" class="login__logo-img">
+				<img src="img/login-logo.svg" alt="logo">
+			</a>
+			<div class="login__logo-text">
+				Твой быстрый старт<br>
+				в бизнесе!
+			</div>
+		</div>
+	</section>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/libs.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
+</html>

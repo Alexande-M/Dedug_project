@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Magazine</title>
+	<link rel="icon" href="icon.ico">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/admin.min.css">
+</head>
+
+<body>
+	<div class="admin">
+		<div class="admin__inner">
+			<div class="admin__nav">
+				<div class="admin__nav-user">
+					<div class="admin__nav-user__photo"></div>
+					<div class="admin__nav-user__name">Привет <span>USER!</span></div>
+				</div>
+				<div class="admin__nav-navbar">
+					<ul class="navbar__list">
+						<li><a href="ideas-basket.html">Корзинка идей</a></li>
+						<li><a href="ideas-magazine.html">Магазин идей</a></li>
+						<li><a href="contracts.html">Контракты</a></li>
+						<li><a href="#">Безопасность</a></li>
+						<li><a href="#">Конфедициальность</a></li>
+						<li><a href="subscriptionInvestor.html">Подключение <span> PRO</span></a></li>
+					</ul>
+				</div>
+				<div class="admin__nav-social">
+					<div class="social__title">Соц.сети</div>
+					<div class="social__items">
+						<div class="social__item"></div>
+						<div class="social__item"></div>
+						<div class="social__item"></div>
+						<div class="social__item"></div>
+					</div>
+				</div>
+			</div>
+			<div class="admin__content">
+				<div class="admin__content-top">
+					<div class="admin__content-top__info">
+						<div class="burger-btn">
+							<div></div>
+							<div></div>
+						</div>
+						<a href="noitfications.html" class="notif-img">
+							<img src="img/notification-mob.svg" alt="notifications">
+						</a>
+						<a href="chat.html" class="notif-img">
+							<img src="img/chat.svg" alt="chat">
+						</a>
+						<a href="chat.html" class="messages">
+							<span><img src="img/messages.svg" alt=""></span>Сообщения
+						</a>
+						<a href="noitfications.html" class="notifications">
+							<span><img src="img/notifications.svg" alt=""></span>Уведомления
+						</a>
+					</div>
+					<div class="admin__content-top__home">
+						<a href="index.html" class="admin-logo">
+							<img src="img/admin-logo.svg" alt="logo">
+							<div class="logo-text">Твой быстрый старт в бизнесе!</div>
+						</a>
+						<a href="index.html" class="log-out">Выйти</a>
+					</div>
+				</div>
+				<div class="admin__content-tables">
+					<div class="magazine">
+						<div class="magazine__header">
+							<div class="magazine__header-title">Магазин идей</div>
+							<div class="magazine__header-search">
+								<form>
+									<button type="submit">
+										<img src="img/search.svg" alt="">
+									</button>
+									<input type="search" name="search" id="search" placeholder="Поиск идеи">
+								</form>
+							</div>
+						</div>
+						<div class="magazine__items">
+							<div class="magazine__items-item">
+								<div class="item__preview-img"><img src="" alt="preview"></div>
+								<div class="item__descr">
+									<div class="item__descr-about">
+										<div class="item__descr-about__name">Кастрюля</div>
+										<div class="item__descr-about__subdescr">
+											Сама добывает воду и готовит тоже сама!
+										</div>
+									</div>
+									<div class="item__descr-price">
+										<div class="item__descr-price__num">$500</div>
+										<a href="detailView.html" class="detail-view">
+											Ознакомиться<span><img src="img/about.svg" alt=""></span>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="magazine__items-item">
+								<div class="item__preview-img"><img src="" alt="preview"></div>
+								<div class="item__descr">
+									<div class="item__descr-about">
+										<div class="item__descr-about__name">Кастрюля</div>
+										<div class="item__descr-about__subdescr">
+											Сама добывает воду и готовит тоже сама!
+										</div>
+									</div>
+									<div class="item__descr-price">
+										<div class="item__descr-price__num">$500</div>
+										<a href="detailView.html" class="detail-view">
+											Ознакомиться<span><img src="img/about.svg" alt=""></span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="filter" id="filter">
+						<form action="">
+							<div class="filter__header">
+								<div class="filter__title">
+									Фильтр
+								</div>
+							</div>
+							<div class="filter__components">
+								<div class="filter__components-component">
+									<div class="component__title">
+										Популярность
+										<!-- <span id="showItems"><img src="img/show-arrow.svg" alt="Show"></span> -->
+									</div>
+									<ul class="component__list">
+										<li><a href="#">Новые идеи</a></li>
+										<li><a href="#">Высокая популярность</a></li>
+										<li><a href="#">Низкая популярность</a></li>
+									</ul>
+								</div>
+								<div class="filter__components-component">
+									<div class="component__title">
+										Стоимость
+										<!-- <span id="showItems"><img src="img/show-arrow.svg" alt="Show"></span> -->
+									</div>
+									<ul class="component__list">
+										<li><a href="#">Максимальная(от $1000000)</a></li>
+										<li><a href="#">Средняя(от $10000)</a></li>
+										<li><a href="#">Низкая(от $1000)</a></li>
+									</ul>
+								</div>
+								<div class="filter__components-component">
+									<div class="component__title">
+										Категория
+										<!-- <span id="showItems"><img src="img/show-arrow.svg" alt="Show"></span> -->
+									</div>
+									<ul class="component__list">
+										<li><a href="#">Развлечения</a></li>
+										<li><a href="#">Техника</a></li>
+										<li><a href="#">Электроника</a></li>
+										<li><a href="#">Бытовое</a></li>
+										<li><a href="#">Исскуство</a></li>
+									</ul>
+								</div>
+							</div>
+
+							<button type="submit">Найти</button>
+
+						</form>
+					</div>
+				</div>
+				<div class="mobile__btns">
+					<div class="mobile__btns-inner">
+						<div id="filter-btn" class="mobile__btns-item">
+							<a href="#filter">
+								<img src="img/filter.svg" alt="Filter">
+								<div class="item-text">Фильтр</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/libs.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+
+</html>
