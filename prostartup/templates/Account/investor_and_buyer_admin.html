@@ -1,0 +1,34 @@
+{% extends 'Account/base_account.html' %}
+{% load static %}<!-- Тут django конструкция  -->
+{% block content %}
+
+<div class="admin__contentTables">
+    <div class="tables">
+        <div class="projects-table">
+            <div class="projects-table__title">Поданные предложения</div>
+            <div class="projects-table__content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="col name">Стартаперы</th>
+                            <th class="col">Дата</th>
+                            <th class="col">Категория</th>
+                            <th class="col">Оценка</th>
+                            <th class="col">Тип</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="name"><a href="detailView.html">Кастрюля</a></td>
+                            <td class="date">22.05.2020</td>
+                            <td class="category">Прибор</td>
+                            <td class="summ">$500</td>
+                            <td class="rating">Продажа</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

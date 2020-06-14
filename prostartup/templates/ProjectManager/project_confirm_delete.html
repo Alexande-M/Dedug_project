@@ -1,0 +1,12 @@
+{% extends 'Account/base_account.html' %}
+
+{% block content %}
+
+<div class="style-text-black" style="color: black !important;">
+<p>Are you sure you want to delete the project: {{ project }}?</p>
+<form action="." method="post">
+    {% csrf_token %}
+    <input type="submit" value="Success">
+</form>
+</div>
+{% endblock %}

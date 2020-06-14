@@ -1,0 +1,61 @@
+
+{% extends 'Account/base_account.html' %}
+{% load chat_tag %}
+
+{% block content %}
+    <style>
+        .unreaded > a{
+            color: red;
+        }
+    </style>
+<div class="style-text-black" style="color: black !important;">
+    <div class="panel">
+        {% load tz %}
+        {% if chats.count == 0 %}
+            <div class="panel panel-body">"Нет ни одного начатого диалога" </div>
+        {% endif %}
+
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">User</th>
+                <th scope="col">Date</th>
+                <th scope="col">Messege</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for setting in settings %}
+                    {% if setting.visibility %}
+                {% for chat in chats %}
+                    
+                    {% if chat.message_set.count != 0 %}
+                        {% with last_message=chat.message_set.last %}
+                            {% get_companion user chat as companion %}
+                                <tr>
+                                    <th scope="row">{{chat.message_set.count}}</th>
+                                    <td><strong class="list-group-item-heading">{{ companion.username }}</strong></td>
+                                    <td><small>{{ last_message.pub_date|utc }}</small></td>
+                                    <td>
+                                        {% if companion != last_message.author %}
+                                        <div>
+                                            <div class="attached-reply-body {% if not last_message.is_readed %}unreaded{% endif %}"><a class="{% if companion == last_message.author and not last_message.is_readed %}unreaded{% endif %}" href="{{ chat.get_absolute_url }}">{{ last_message.message|truncatechars_html:"20"|safe|striptags }}</a></div>
+                                        </div>
+                                    {% else %}
+                                            <a class="{% if companion == last_message.author and not last_message.is_readed %}unreaded{% endif %}" href="{{ chat.get_absolute_url }}">{{ last_message.message|truncatechars_html:"20"|safe|striptags }}</a>
+                                    {% endif %}
+                                    </td>
+                                    <td><a href="{% url 'Messenger:clear_chatView' chat.id %}">Delete</a></td>
+                                </tr>
+                        {% endwith %}
+                    {% endif %}
+                    
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    </div>
+{% endblock %}
