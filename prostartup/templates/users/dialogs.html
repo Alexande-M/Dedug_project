@@ -1,0 +1,64 @@
+{% extends 'Account/base_account.html' %}
+{% load chat_tag %}
+
+{% load accaunt_redir_extras %}
+{% block content %}
+
+<div class="admin__dialogs">
+    <style>
+        .unreaded>a {
+            color: red;
+        }
+    </style>
+    {% load tz %}
+
+    {% if chats.count == 0 %}
+    <div class="admin__title">Нет ни одного начатого диалога</div>
+    <div class="dialogs__title">Нет ни одного начатого диалога</div>
+    {% endif %}
+    <div class="admin__title">Диалоги</div>
+    <div class="dialogs__title">Диалоги</div>
+    <div class="count"> У вас {{count_is_readed}} не прочитаныйх </div>
+    <div class="admin__dialogs-items">
+        {% for setting in settings %}
+        {% if setting.visibility %}
+        {% for chat in chats %}
+        {% if chat.message_set.count != 0 %}
+        {% with last_message=chat.message_set.last %}
+
+        {% get_companion user chat as companion %}
+
+        <a href="{{ chat.get_absolute_url }}" class="admin__dialogs-item">
+            <div class="user-image">
+                {% if companion|personal_data %}
+                <img src="{{ companion|personal_data  }}" alt="Profile image">
+                {% endif %}
+            </div>
+            <div class="user-message">
+                <div class="message-content">
+                    <div class="user-name">{{ companion.first_name }} {{ companion.last_name }}</div>
+                    <div class="user-message__text">{{ last_message.message|truncatechars_html:"20"|safe|striptags }}
+                    </div>
+                </div>
+                <div class="message-info" style="margin-right: 16px;">
+                    <div class="message-time">{{ last_message.pub_date|utc }}</div>
+                    {% if companion != last_message.author %}
+                    <div class="unread">
+                        <span class="material-icons">
+                            {% if not last_message.is_readed %}done {% else %} done_all {% endif %}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+        <!-- <td><a href="{% url 'Messenger:clear_chatView' chat.id %}">Delete</a></td> -->
+        {% endwith %}
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

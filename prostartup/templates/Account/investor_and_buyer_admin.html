@@ -1,0 +1,37 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load static %}<!-- Тут django конструкция  -->
+{% block content %}
+
+<div class="admin__contentTables">
+    <div class="tables">
+        <div class="projects-table">
+            <div class="projects-table__title">Поданные предложения</div>
+            <div class="projects-table__content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="col name">Стартаперы</th>
+                            <th class="col">Дата</th>
+                            <th class="col">Категория</th>
+                            <th class="col">Стоимость</th>
+                            <th class="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for offer in offers %}
+                        <tr>
+                            <td class="name"><a href="{{offer.get_member_url }}">{{offer.member}}</a></td>
+                            <td class="date">{{offer.rejected|date:"j E Y"}}</td>
+                            <td class="category">{{offer.member.choices}}</td>
+                            <td class="summ">₽ {{offer.member.project_cost}}</td>
+                            <td class="action"><a href="{% url 'Offers:remove_offer' offer.id%}">Canel</a></p></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

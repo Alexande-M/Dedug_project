@@ -1,0 +1,100 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load static %}
+<!-- Тут django конструкция  -->
+{% block content %}
+<div class="admin__contentTables">
+  <div class="tables">
+
+    <div class="projects-table">
+      <div class="projects-table__title">Ваши проекты</div>
+      <div class="projects-table__content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col name">Проекты</th>
+              <th class="col">Дата</th>
+              <th class="col">Категория</th>
+              <th class="col">Тип</th>
+              <th class="col">Стоимость</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for project in projects %}
+            <tr>
+              <td class="name"><a href="{{ project.get_absolute_url }}">{{ project.project_name }}</a></td>
+              <td class="date">{{ project.publication_date|date:"j E Y" }}</td>
+              <td class="category">{{ project.category }}</td>
+              <td class="rating">({{project.choices}})</td>
+              <td class="summ">{{project.project_cost}}$</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="projects-table">
+      <div class="projects-table__title">Аналитика(disconnect)</div>
+      <div class="projects-table__content">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="col name">Название проекта</th>
+              <th class="col">Просмотры</th>
+              <th class="col">Продвижение</th>
+              <!-- <th class="col">Количество предложений</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            {% for analytic in analytics %}
+            <tr>
+              <td class="name"><a href="{{ analytic.project.get_absolute_url }}">{{analytic}}</a></td>
+              <td class="date">{{analytic.views}}</td>
+              <td class="date">{% if analytic.project.promotions %} Есть {% else %} Нет {% endif  %}</td>
+              <!-- <td class="date">15</td> -->
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="projects-table">
+      <div class="projects-table__title">Поданные предложения</div>
+      <div class="projects-table__content">
+        {% for offer in offers %}
+        <div class="project-action__item">
+
+          <div class="project-item__inner">
+            <div class="project-item__info">
+              <div class="project-item__info-descr">
+                <div class="item__name">{{offer}}</div>
+                <div class="item__category">{{offer.member.category}}</div>
+              </div>
+              <div class="project-item__info-summ">
+                <div class="item__cost">₽ {{offer.member.project_cost}}</div>
+                <div class="item__date">{{offer.rejected|date:"j E Y"}}</div>
+              </div>
+            </div>
+            <div class="project-item__actions">
+              <a href="{% url 'Offers:contract_create' offer.id%}">Принять</a>
+              <a href="{% url 'Offers:remove_offer' offer.id%}">Отклонить</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile__btns">
+    <div class="mobile__btns-inner">
+      <div class="mobile__btns-item">
+        <a href="add-project.html">
+          <img src="{% static 'img/plus.svg' %}" alt="Add">
+          <div class="item-text">Выставить проект</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
