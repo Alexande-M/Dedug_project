@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://prostart-up.ru/</loc>
+	<lastmod>2020-07-19T01:19:00+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/about-us/</loc>
+	<lastmod>2020-07-19T01:19:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/contact-us/</loc>
+	<lastmod>2020-07-19T01:19:04+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/privacy-policy/</loc>
+	<lastmod>2020-07-19T01:19:03+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/login/</loc>
+	<lastmod>2020-07-19T01:19:07+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/register/Seller/</loc>
+	<lastmod>2020-07-19T01:19:04+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/register/Buyer/</loc>
+	<lastmod>2020-07-19T01:19:05+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/register/Investor/</loc>
+	<lastmod>2020-07-19T01:19:05+01:00</lastmod>
+	<priority>0.4</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/static/document/privacy%20policy.docx</loc>
+	<lastmod>2020-07-19T01:19:05+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/login/?next=/account/</loc>
+	<lastmod>2020-07-19T01:19:06+01:00</lastmod>
+	<priority>0.2</priority>
+</url>
+<url>
+	<loc>https://prostart-up.ru/account/password_reset/</loc>
+	<lastmod>2020-07-19T01:19:06+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+</urlset>
