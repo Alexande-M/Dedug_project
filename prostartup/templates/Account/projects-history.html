@@ -1,0 +1,76 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{%load static%}
+{% block content %}
+<div class="admin__content-block">
+	<div class="admin__title">История ваших проектов</div>
+	<div class="add__project">
+		<div class="add__project-inner">
+			<div class="add__project-about edit__project-about">
+				<div class="add__project-about__title">История ваших проектов</div>
+			</div>
+			<div class="admin__content-tabs">
+				<div class="admin__content-tabs__header">
+					<div data-tab="1" class="js-tab-trigger admin__content-tabs__header-item active-tab">Готовые</div>
+					<div data-tab="2" class="js-tab-trigger admin__content-tabs__header-item">Выставленные</div>
+				</div>
+				<div class="admin__content-tabs__content">
+					<div data-tab="1" class="js-tab-content admin__content-tabs__content-item active-tab">
+						<div class="projects-table__content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="col name">Проекты</th>
+										<th class="col">Категория</th>
+										<th class="col">Дата</th>
+										<th class="col">Стоимость</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for project in all_comletion %}
+										{% if project.project_comletion == True  %}
+											<tr>
+												<td class="name"><a href="{{ project.get_absolute_url }}">{{ project.project_name }}</a></td>
+												<td class="category">{{ project.category }}</td>
+												<td class="date">{{ project.publication_date|date:"j E Y" }}</td>
+												<td class="summ">{{project.project_cost}}$</td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div data-tab="2" class="js-tab-content admin__content-tabs__content-item">
+						<div class="projects-table__content">
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="col name">Проекты</th>
+										<th class="col">Категория</th>
+										<th class="col">Дата</th>
+										<th class="col">Стоимость</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for project in all_comletion %}
+										{% if project.project_comletion == False  %}
+											<tr>
+												<td class="name"><a href="{{ project.get_absolute_url }}">{{ project.project_name }}</a></td>
+												<td class="category">{{ project.category }}</td>
+												<td class="date">{{ project.publication_date|date:"j E Y" }}</td>
+												<td class="summ">₽{% if project.choices == 'Selling' %} {{project.project_cost}} {% else %} {{project.project_investment}}{% endif %}</td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

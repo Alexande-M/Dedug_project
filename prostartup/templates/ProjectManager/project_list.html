@@ -1,0 +1,161 @@
+{% extends 'Account/base_account.html' %}
+
+{% load accaunt_redir_extras %}
+
+{% load static %}
+<!-- Тут django конструкция  -->
+
+{% block content %}
+
+
+<div class="admin__content-tables">
+  <div class="magazine" style="margin-bottom: 100px;"> 
+    <div class="magazine__header">
+      <div class="magazine__header-title"><a href="{% url 'project_list' %}" style="color:#00b2e7;">Магазин идей </a>
+      </div>
+      <div class="magazine__header-search">
+        <form method="GET" action="{% url 'SearchFilter' %}">
+          <button type="submit">
+            <img src="{% static 'img/search.svg' %}" alt="">
+          </button>
+          <input type="search" name="q" id="search" placeholder="Поиск идеи">
+        </form>
+      </div>
+    </div>
+    <div class="magazine__items">
+
+      {% if project_list %}
+      {% if today_date < chek_subscribe  or  request.user|has_group:"Seller" %}
+      {% for project in project_list %}
+      <div class="magazine__items-item" id="project">
+
+        <div class="item__preview-img" {% if project.promotions  %} style="background: rgb(2,0,36);background: linear-gradient(27deg, rgba(2,0,36,1) 0%, rgba(10,9,121,1) 34%, rgba(0,212,255,1) 100%);"{% endif %}>{% if project.project_img_one %}<img
+            src="{{project.project_img_one.url}}">{% endif %}</div>
+        <div class="item__descr">
+          <div class="item__descr-about">
+            <div class="item__descr-about__name">{{ project.project_name }}</div>
+            <div class="item__descr-about__subdescr">
+              {{project.presentation|truncatechars:20}}
+            </div>
+          </div>
+          <div class="item__descr-price">
+            <div class="item__descr-price__num">
+              ₽{% if project.choices == 'Selling' %}{{project.project_cost}}{% else %}{{project.project_investment}}{% endif %}
+            </div>
+            <a href="{{ project.get_absolute_url }}" class="detail-view">
+              Ознакомиться<span><img src="{% static 'img/about.svg' %}" alt=""></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>Извините у вас истёк срок подписки </p>
+      {% endif %}
+
+      {% else %}
+      <p>В машазине отсутствуют проекты по данному запросу !</p>
+      {% endif %}
+    </div>
+    <div class="pagination">
+      {% if is_paginated %}
+      {% if page_obj.has_previous %}
+      <div class="">
+        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"><span class="material-icons">
+            arrow_back_ios
+          </span></a>
+      </div>
+
+      {% endif %}
+      <div class="" style="margin-right: 5px; font-size: 16px;">
+        {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+      </div>
+
+      {% if page_obj.has_next %}
+      <div class="">
+        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"><span class="material-icons">
+            arrow_forward_ios
+          </span></a>
+      </div>
+
+      {% endif %}
+      {% endif %}
+      <style>
+        .pagination {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      </style>
+    </div>
+  </div>
+  <div class="filter" id="filter">
+    <form action="{% url 'FilterProject' %}" method="GET">
+      <div class="filter__header">
+        <div class="filter__title">
+          Фильтр
+        </div>
+      </div>
+      <div class="filter__components">
+        <div class="filter__components-component">
+          <div class="component__title">Популярность</div>
+          <ul class="component__list">
+            <li>
+              <label for="rating">
+                <input id="rating" type="checkbox">Новые идеи
+              </label>
+            </li>
+            <li>
+              <label for="rating2">
+                <input id="rating2" type="checkbox">Высокий рейтинг
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter__components-component">
+          <div class="component__title">Тип проекта </div>
+          <ul class="component__list">
+            {% for type in view.get_type %}
+            <li>
+              <label for="{{type.0}}">
+                <input id="{{type.0}}" type="checkbox" name = "choices" value="{{type.0}}">{{type.0}}
+              </label>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        
+        <div class="filter__components-component">
+          <div class="component__title">Категория</div>
+          <ul class="component__list">
+            {% for category in view.get_category %}
+            <li>
+              <label for="{{category.name}}">
+                <input id="{{category.name}}" type="checkbox" name="category" value="{{category.id}}">{{category.name}}
+              </label>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <button type="submit">Найти</button>
+
+    </form>
+  </div>
+</div>
+<div class="mobile__btns">
+  <div class="mobile__btns-inner">
+    <div id="filter-btn" class="mobile__btns-item">
+      <a href="#filter">
+        <img src="{% static 'img/filter.svg' %}" alt="Filter">
+        <div class="item-text">Фильтр</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+<!-- ({{project.choices}}) ({{project.project_author}} : {{project.project_author.groups.all.0}}) -->

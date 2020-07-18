@@ -1,0 +1,36 @@
+{% load static %}
+<div class="header__nvigation-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="close__btn-mob">
+    <img src="{% static 'img/close.mob.svg' %}" alt="close">
+</div>
+<nav class="menu">
+    <ul class="menu__list">
+        <li><a href="{% url 'Home' %}">Главная</a></li>
+        <li><a href="{% url 'About_us' %}">О нас</a></li>
+        <li><a href="#">Проекты</a></li>
+        <li><a href="{% url 'Contact_us' %}">Связь</a></li>
+        <li><a href="{% url 'privacy_policy' %}">Конфедициальность</a></li>
+        <li><a href="#">Сотрудничество</a></li>
+        <li><a href="#">Вакансии</a></li>
+    </ul>
+</nav>
+<div class="close__btn">
+    <img src="{% static 'img/close.svg' %}" alt="close">
+</div>
+<div class="header__navigation-social">
+    <div class="social__title">Соц.сети</div>
+    <div class="social__items">
+        <div class="social__item"><img src="{% static 'img/telegram.svg' %}" alt=""></div>
+        <div class="social__item"><img src="{% static 'img/whatsapp.svg' %}" alt=""></div>
+        <div class="social__item"><img src="{% static 'img/facebook.svg' %}" alt=""></div>
+        <div class="social__item"><img src="{% static 'img/instagram.svg' %}" alt=""></div>
+    </div>
+</div>
+<div class="header__navigation-lang">
+    <a href="#" class="rus">Рус</a>
+    <a href="#" class="eng">Анг</a>
+</div>

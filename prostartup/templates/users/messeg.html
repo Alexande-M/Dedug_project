@@ -1,0 +1,96 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load chat_tag %}
+{% load static %}
+{% block content %}
+
+
+<div class="style-text-black" style="color: black !important;">
+    {% if not chat %}
+    <div class="panel panel-body">
+        "Невозможно начать беседу. Не найден пользователь или вы не имеете доступа к данной беседе."
+    </div>
+    {% else %}
+    {% load tz %}
+    {% if chat %}
+    <div class="panel">
+        <div id="innerMessages" class="scroll">
+        </div>
+    </div>
+    {% endif %}
+    <div id="message_form" class="message_form">
+        <form id="message-form" class="panel panel-body" method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" class="btn btn-default btn-sm"><span class="ico ico-comment"></span>Отправить</button>
+        </form>
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+<script type="text/javascript">
+</script>
+<script type="text/javascript">
+    function parse_data(data) {
+
+        var data = data;
+        var list = []
+        var data_mess = '';
+
+        for (i in data) {
+            list[i] = [{ 'author': data[i].author, 'message': data[i].message ,'is_readed' : data[i].is_readed}]
+        }
+        for (i in list) {
+            for (t of list[i]) {
+                var when_mess = '';
+                var is_readed = '';
+                var unreaded = t.is_readed;
+                // console.log(!Boolean(unreaded));
+                if ('{{request.user.username}}' == t.author) {
+                    when_mess = 'message_from';
+                } else {
+                    when_mess = 'message_to';
+                }
+
+                var un_read = '';
+                if(unreaded){
+                    un_read = 'readed'
+                } else{
+                    un_read = 'unreaded'
+                }
+                // console.log(data_mess);
+                data_mess += '<div class="list-group-item '+ un_read +' "> <div class="group ' + when_mess + ' "><span><small>'
+                    + t.author +
+                    '</small></span><div class="message">'
+                    + t.message +
+                    '</div></div></div>';
+            }
+        }
+        document.getElementById('innerMessages').innerHTML = data_mess;
+    }
+    function show() {
+        $.ajax({
+            url: "{% url 'Messenger:all_from_json' ID_PAGE%}",
+            dataType: 'json',
+            success: function (response) {
+
+
+                parse_data(response);
+                $('#innerMessages').scrollTop(99999);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        var time = 35000;
+        show();
+        setInterval('show()', time);
+    });
+</script>
+{% endblock %}

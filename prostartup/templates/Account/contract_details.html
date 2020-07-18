@@ -1,0 +1,120 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load static %}
+{% block content %}
+
+{% for contract in contracts %}
+<div style="color: #06005D;" class="admin__content-contractDetails">
+	<div class="admin__content-contractDetails__inner">
+		{% if contract.project_id.project_img_one %}
+		<div class="admin__content-contractDetails__shortDescr"
+			style="background-image: url({{contract.project_id.project_img_one.url}});">
+			{% else %}
+			<div class="admin__content-contractDetails__shortDescr"
+				style="background-image: url({% static 'img/contract-bg.jpg' %});">
+				{% endif %}
+				<div>
+					<div class="admin__content-contractDetails__shortDescr-title">
+						<div class="admin__content-contractDetails__shortDescr-title__name">
+							{{contract.project_id.project_name}}
+						</div>
+						<div class="admin__content-contractDetails__shortDescr-title__text">
+							{{contract.project_id.presentation}}
+						</div>
+					</div>
+					<a href="{{contract.project_id.get_absolute_url}}"
+						class="admin__content-contractDetails__shortDescr-watchBtn">Помотреть
+						идею</a>
+				</div>
+			</div>
+			<div class="admin__content-contractDetails__descr">
+				<div class="admin__content-contractDetails__descr-header">
+					<div class="admin__content-contractDetails__descr-header__human">
+						<div class="contractoor__name">{{contract.from_user}}</div>
+						<div class="contractor__type">Новатор</div>
+					</div>
+					<div class="admin__content-contractDetails__descr-header__human">
+						<div class="contractoor__name">{{contract.to_user}}</div>
+						<div class="contractor__type">Инвестор</div>
+					</div>
+
+				</div>
+				<p class="admin__content-contractDetails__descr-text">
+					
+					{% if contract.project_id.choise == 'Investing' %}
+					<span class="bold" style="text-align: right;">{{contract.rejected|date}}</span><br>
+					{{contract.to_user}} и {{contract.from_user}} подписали настоящий контракт о совместной реализации
+					инвестиционного проекта {{contract.project_id.project_name}}<br>
+
+					<span class="bold"> Права и обязанности сторон</span><br>
+					В рамках контракта инвестор обязуется осуществлять целевое финансирование деятельности Получателя.
+					Получатель обязуется вкладывать предоставленные инвестиции в объект инвестиционной деятельности и
+					осуществлять их целевое использование.
+					Также Инвестор обязуется (если это зависит от Инвестора) принять участие в согласовании с
+					уполномоченными государственными органами, утверждении и получении разрешительной документации, если
+					это необходимо для достижения целей инвестиционной деятельности.
+					Получатель обязуется обеспечить доступ инвестора к деятельности Получателя инвестиций для
+					осуществления контроля и качества выполняемых работ.<br>
+					<span class="bold">Порядок предоставления инвестиций</span><br>
+					Инвестиции по договору определяются в денежной форме, в валюте Российской Федерации (рубль).
+					Инвестиции предоставляются Инвестором ежемесячно в порядке, определённом устным договором сторон.
+					Увеличение размера инвестиций или изменение порядка их предоставления определяется дополнительными
+					соглашениями сторон.
+					Реализация инвестиционной деятельности осуществляется Получателем собственными силами и/или силами
+					привлечённых специалистов (исполнителей, подрядчиков). Поиск и выбор третьих лиц, а также переговоры
+					с ними осуществляются Получателем самостоятельно.
+					После заключения сделки часть инвестиционной деятельности является объектом прав Инвестора.
+
+					<span class="bold">Данный договор вступил в силу с момента совершения сделки и действует до его
+						прекращения по
+						соглашению сторон.</span>
+					{% else %}
+					<span class="bold" style="text-align: right;">{{contract.rejected|date}}</span><br>
+					{{contract.to_user}} и {{contract.from_user}} подписали настоящий контракт о передаче прав владения на бизнес-модель <b>{{contract.project_id.project_name}}</b> Покупателю.<br>
+					<span class="bold">Права и обязанности сторон</span><br>
+					Продавец обязуется передать бизнес-модель и относящиеся к ним документы Покупателю, а также
+					физические объекты имущества, относящиеся к бизнес-модели (если они имеются) на условиях,
+					установленных договором сторон.<br><br>
+					Также Продавец обязуется перевезти имущество своими силами и за свой счет и застраховать имущество
+					при перевозке по всем обычно принятым рискам. Перевозка имущества может быть осуществлена
+					Покупателем по взаимному соглашению сторон.
+					Продавец не имеет права повторно выставлять на продажу уже проданную бизнес-модель, либо
+					бизнес-модель, аналогичную проданной.
+					Продавец вправе отказать конкретному покупателю в продаже бизнес-модели.
+					Покупатель обязуется принять бизнес-модель и сопроводительные документы, а также физические объекты
+					имущества, если они прилагаются к покупке.
+					Покупатель обязан осмотреть сопроводительные документы и физические объекты имущества, и принять их
+					по акту приёма-передачи в течение 10 дней.
+					В случае обнаружения неточностей, несоответствий и некорректных пунктов в документации покупатель
+					обязан известить продавца.<br><br>
+					Покупатель вправе распоряжаться бизнес-моделью и прилагающимися документами, а также имуществом по
+					своему усмотрению, если это не противоречит законодательству Российской Федерации и страны, в
+					которой он находится.
+					Покупатель вправе вносить изменения в бизнес-процессы, предусмотренные моделью, а также вносить свои
+					дополнения и корректировки. Всю ответственность за последующие результаты принимает на себя
+					Покупатель.<br><br>
+					Покупатель имеет запросить возврат средств, если бизнес-модель не соответствует заявленному
+					описанию, а также недееспособна.
+					Получение данного контракта означает факт оплаты Покупателем приобретения бизнес-модели и передачи
+					денег Продавцу.
+					{% endif %}
+				</p>
+				<div class="admin__content-contractDetails__descr-congratulations">
+					<div class="our__logo">
+						<img src="{% static 'img/logo.svg' %}" alt="">
+					</div>
+					<div class="congratulations">
+						<div class="congratulations__title">Команда prostart-up поздравляет вас!</div>
+						<p class="congratulations__text">
+							День заключения договора: {{contract.rejected|date}}<br>
+							ID контракта: {{contract.id}}
+						</p>
+						<div class="contract-id"></div>
+						<a href="" style="color: #06005D; display: block;">Скачать документ</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	{% endblock %}

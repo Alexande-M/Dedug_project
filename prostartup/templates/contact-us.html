@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	{% load static %}
+<head>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prostart-up</title>
+	<link rel="icon" href="{% static 'icon.ico' %}">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+	<a href="javascript://" onclick="history.back();return false;" class="policy_back back-btn">
+		<img src="{% static 'img/close.mob.svg' %}" alt="back">
+	</a>
+	<div class="top-button"></div>
+	<div style="position: fixed;" class="header__navigation">
+		{% include 'includes/menu.html' %}
+	</div>
+	<section class="privacy__header">
+		<a href="{% url 'Home' %}" class="privacy__header-logo">
+			<img src="{% static 'img/footer-logo.svg' %}" alt="logo">
+		</a>
+		<div class="privacy__header-info">
+			<div class="privacy__header-info__title">Обратная связь</div>
+			<div class="privacy__header-info__subtitle">
+				Здесь вы можете связаться с нами и узнать о отм что вас беспокоит
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-form">
+		<div class="contact-form__inner">
+			<div class="contact-form__title">
+				<h3>Обратная связь c нами</h3>
+			</div>
+			<form action="" method="POST">
+				{% csrf_token %} 
+				<div class="form__inputs">
+					{{form.name}}
+					{{form.email}}
+				</div>
+				<div class="form__inputs">
+					{{form.subject}}
+					<button type="submit">Отправить нам</button>
+				</div>
+					{{form.massage}}
+				<div class="form__inputs--mob">
+					<button type="submit">Отправить нам</button>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	
+	{% include 'includes/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/libs.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prostart-up</title>
+	<link rel="icon" href="{% static 'icon.ico' %}">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,500,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+</head>
+
+<body>
+	<a href="javascript://" onclick="history.back();return false;" class="policy_back back-btn">
+		<img src="{% static 'img/close.mob.svg' %}" alt="back">
+	</a>
+	<div class="top-button"></div>
+	<div style="position: fixed;" class="header__navigation">
+		{% include 'includes/menu.html' %}
+	</div>
+	<section class="about__header">
+		<a href="{% url 'Home' %}" class="privacy__header-logo">
+			<img src="{% static 'img/footer-logo.svg' %}" alt="logo">
+		</a>
+		<div class="about__header-title">Полная информация о нашем сервисе и наших разработчиков</div>
+	</section>
+	<section class="about__top">
+		<div class="about__top-logo">
+			<img src="{% static 'img/modal-logo.svg' %}" alt="logo">
+		</div>
+		<div class="about__top-descr">
+			<div class="about__top-descr--title">О нас</div>
+			<div class="about__top-descr--info">
+				<span>Вас приветствует команда Prostart-Up!</span>
+				Мы – платформа бизнес-предложений. Помогаем стартаперам ускорять старт бизнеса, а инвесторам и
+				покупателям – вкладываться в проекты с высокой отдачей, либо покупать готовые бизнес-модели и
+				монетизировать их самостоятельно.
+				Имея опыт заключения подобных сделок, а также бизнес-консультирования, мы решили перенести его в
+				онлайн-формат – это будет намного удобнее и проще для всех сторон.
+				<div class="download__link">
+					<a href="/static/document/privacy policy.docx" id="download" download>Скачать документ</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- <section class="why">
+		<div class="why__title">Почему именно мы?</div>
+		<div class="why__items">
+			<div class="why__item">
+				<div class="why__item-number">1</div>
+				<div class="why__item-text">
+					Предоставляем вашей креативности раздвинуть границы и начать заниматься любимым делом!
+				</div>
+			</div>
+			<div class="why__item">
+				<div class="why__item-number">2</div>
+				<div class="why__item-text">
+					Предлагаем удобное взаимодействие с ваши партнёрами по бизнесу!
+				</div>
+			</div>
+			<div class="why__item">
+				<div class="why__item-number">3</div>
+				<div class="why__item-text">
+					Продуманное сотрудничество с группами лиц чьи проекты вы выбрали для дальнейшей работы!
+				</div>
+			</div>
+		</div>
+	</section> -->
+	<section class="our-services">
+		<div class="why__title">Наши цели и задачи</div>
+		<div class="our-services__info">
+			<ol class="our-services__list">
+				<li class="our-services__list--title">Возможность
+					<ul>
+						<li>Предельно облегчить стартаперам и инвесторам.</li>
+						<li>Поиск и взаимодействие между собой.</li>
+						<li>Застраховать все стороны от недобросовестных действий.</li>
+					</ul>
+				</li>
+				<li class="our-services__list--title">Реализация
+					<ul>
+						<li>Помочь инвесторам как можно выгоднее вкладывать свои деньги.</li>
+						<li>а стартаперам – воплощать в жизнь и развивать свои идеи.</li>
+					</ul>
+				</li>
+				<li class="our-services__list--title">Формирование
+					<ul>
+						<li>Помочь авторам бизнес-моделей максимально выгодно продать своё «детище».</li>
+						<li>а покупателям – находить и приобретать бизнес-модели «по душе» и под свой бюджет.</li>
+					</ul>
+				</li>
+				<li class="our-services__list--title">Доступность
+					<ul>
+						<li>Сделать рынок стартапов и бизнес-моделей максимально развитым.</li>
+						<li>цивилизованным и удобным для всех его участников.</li>
+					</ul>
+				</li>
+			</ol>
+		</div>
+
+	</section>
+	<section class="how">
+		<div class="how__inner">
+			<div class="how__title">Как мы это делаем?</div>
+			<div class="how__text">
+				С одной стороны мы собираем предложения инициативных старперов, а с другой – набираем инвесторов и
+				покупателей
+				бизнес-моделей.
+				Также мы проводим целый комплекс мероприятий по СЕО, чтобы увеличить посещаемость сайта до нескольких
+				десятков тысяч
+				человек в сутки. За счёт такой популярности ни одно предложение не останется незамеченным. Также мы
+				наращиваем
+				популярность через комплекс мер по SMO и SMM. При этом мы собирем исключительно целевую аудиторию –
+				стартаперов,
+				новаторов, покупателей и инвесторов.
+				Кроме того, мы проверяем предложения, которые выкладываются, чтобы инвесторы и покупатели имели доступ к
+				наиболее
+				достойным проектам, а стартаперы и продавцы могли корректировать и улучшать свои предложения.
+
+			</div>
+		</div>
+	</section>
+
+	{% include 'includes/footer.html' %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="{% static 'js/libs.min.js' %}"></script>
+	<script>
+		new WOW().init();
+	</script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

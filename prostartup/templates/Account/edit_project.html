@@ -1,0 +1,42 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load static %}
+{% block content %}
+<div class="admin__content-form">
+    <div class="admin__title">Редактирование проекта</div>
+    <div class="add__project">
+        <form>
+            <div class="add__project-inner">
+                <div class="add__project-about edit__project-about">
+                    <div class="add__project-about__title">Редактирование проекта</div>
+                </div>
+                <div class="edit__project-items">
+		    {% if projects %}
+                    {% for project in projects %}
+                    <div class="project-item">
+                        <div class="project-item__inner">
+                            <div class="project-item__info">
+                                <div class="project-item__info-descr">
+                                    <div class="item__name">{{ project.project_name }}</div>
+                                    <div class="item__category">{{ project.category }}</div>
+                                </div>
+                                <div class="project-item__info-summ">
+                                    <div class="item__cost">{% if project.choices == 'Selling' %}{{project.project_cost}}{% else %}{{project.project_investment}}{% endif %}₽</div>
+                                    <div class="item__date">{{project.publication_date}}</div>
+                                </div>
+                            </div>
+                            <a href="{% url 'project_update' project.pk %}" class="project-item__btn">Изменить</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                        <h1 style="color: #008bf0; text-align: center;">У вас нет действующих проетов ;) </h1>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

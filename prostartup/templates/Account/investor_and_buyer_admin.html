@@ -1,0 +1,48 @@
+{% extends 'Account/base_account.html' %}
+{% load accaunt_redir_extras %}
+{% load static %}<!-- Тут django конструкция  -->
+{% block content %}
+
+<div class="admin__contentTables">
+    <div class="tables">
+        <div class="projects-table">
+            <div class="projects-table__title">Поданные предложения</div>
+            <div class="projects-table__content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="col name">Стартаперы</th>
+                            <th class="col">Дата</th>
+                            <th class="col">Категория</th>
+                            <th class="col">Стоимость</th>
+                            <th class="col">Действие</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for offer in offers %}
+                        <tr>
+                            <td class="name"><a href="">{{offer|safe}}</a></td>
+                            <td class="date">{{offer.rejected|date:"j E Y"}}</td>
+                            <td class="category">{{offer.member.choices}}</td>
+                            <td class="summ"> ₽{% if offer.member.choices == 'Selling' %}{{offer.member.project_cost}}{% else %}{{offer.member.project_investment}}{% endif %}</td>
+                            <td class="action"><a href="{% url 'Offers:remove_offer' offer.id%}" onclick="JavaScript:return Validator(this.id);">Отмена заявки</a></p></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  function Validator(id_) {
+    if (confirm("Вы подтверждаете операцию?")) {
+      document.getElementById(id_).submit();
+      return (true);
+    } else {
+      return (false);
+    }
+  }
+</script>
+{% endblock %}
