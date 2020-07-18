@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /static/document/privacy policy.docx
+Disallow: /
+Host: www.prostart-up.ru
+Sitemap: https://prostart-up.ru/sitemap.xml
